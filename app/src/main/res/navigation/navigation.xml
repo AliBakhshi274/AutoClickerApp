@@ -10,4 +10,9 @@
         android:name="com.example.autoclickerapp.ui.home.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" />
+    <dialog
+        android:id="@+id/customDialogPermission"
+        android:name="com.example.autoclickerapp.ui.activity.DialogPermission"
+        tools:layout="@layout/dialog_permission"
+        android:label="CustomDialogPermission" />
 </navigation>

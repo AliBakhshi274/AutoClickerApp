@@ -1,21 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
     <color name="primary">#2196F3</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="title">#272727</color>
+    <color name="title">#EE3C3B3B</color>
     <color name="description">#DD4E4C4C</color>
     <color name="error">#EC1717</color>
 
+    <color name="enable">#2744E4</color>
+    <color name="disable">#7C7979</color>
+
     <color name="cardView_homeFragment_lightMode">#B0DAFB</color>
-    <color name="cardView_homeFragment_darkMode">#0F1B25</color>
+    <color name="cardView_homeFragment_darkMode">#F20F1B25</color>
 
     <color name="dialogPermission_header_textColor_lightMode">#3D464D</color>
-    <color name="dialogPermission_header_textColor_darkMode">#A4CEEA</color>
+    <color name="dialogPermission_header_textColor_darkMode">#7BBFEC</color>
 
     <color name="dialogPermission_title_textColor">@color/white</color>
-    <color name="dialogPermission_title_background">#279EFB</color>
-
+    <color name="dialogPermission_title_background">#7BBBED</color>
 
 </resources>

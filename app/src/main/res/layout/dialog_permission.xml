@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/dialogPermission_textView_title"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:theme="@style/dialogPermission_title"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/dialogPermission_textView_header"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:gravity="start"
+            android:theme="@style/dialogPermission_header"
+            app:layout_constraintTop_toBottomOf="@id/dialogPermission_textView_title" />
+
+        <View
+            android:id="@+id/dialogPermission_view_separator_first"
+            style="@style/Separator"
+            android:layout_marginLeft="4dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginRight="4dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/dialogPermission_textView_header" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/dialogPermission_parent_overlay"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:focusable="true"
+            android:foreground="?attr/selectableItemBackground"
+            app:layout_constraintTop_toBottomOf="@id/dialogPermission_view_separator_first">
+
+            <TextView
+                android:id="@+id/dialogPermission_textview_overlayTitle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:gravity="start"
+                android:padding="4dp"
+                android:text="Overlay"
+                android:textColor="@color/title"
+                android:textSize="21sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/dialogPermission_textview_overlayDesc"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:gravity="start"
+                android:padding="4dp"
+                android:paddingEnd="8dp"
+                android:text="The overlay permission allow this application to display a menu over other apps."
+                android:textColor="@color/description"
+                android:textSize="15sp"
+                android:textStyle="italic"
+                app:layout_constraintEnd_toStartOf="@id/dialogPermission_imageView_overlay"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/dialogPermission_textview_overlayTitle" />
+
+            <ImageView
+                android:id="@+id/dialogPermission_imageView_overlay"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_marginEnd="4dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:src="@drawable/ic_confirm" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <View
+            android:id="@+id/dialogPermission_view_separator_second"
+            style="@style/Separator"
+            android:layout_marginLeft="4dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginRight="4dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/dialogPermission_parent_overlay" />
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/dialogPermission_parent_accessibilityService"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:focusable="true"
+            android:foreground="?attr/selectableItemBackground"
+            app:layout_constraintTop_toBottomOf="@+id/dialogPermission_view_separator_second">
+
+            <TextView
+                android:id="@+id/dialogPermission_textview_AccessibilityServiceTitle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:gravity="start"
+                android:padding="4dp"
+                android:text="Accessibility Service"
+                android:textColor="@color/title"
+                android:textSize="21sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/dialogPermission_textview_AccessibilityServiceDesc"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:gravity="start"
+                android:padding="4dp"
+                android:paddingEnd="8dp"
+                android:text="The accessibility service allows this application to click on other apps for you."
+                android:textColor="@color/description"
+                android:textSize="15sp"
+                android:textStyle="italic"
+                app:layout_constraintEnd_toStartOf="@id/dialogPermission_imageView_accessibilityService"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/dialogPermission_textview_AccessibilityServiceTitle" />
+
+            <ImageView
+                android:id="@+id/dialogPermission_imageView_accessibilityService"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_marginEnd="4dp"
+                tools:src="@drawable/ic_error"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <View
+            android:id="@+id/dialogPermission_view_separator_third"
+            style="@style/Separator"
+            android:layout_marginLeft="4dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginRight="4dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/dialogPermission_parent_accessibilityService" />
+
+        <Button
+            android:id="@+id/dialogPermission_button_OK"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="20dp"
+            android:background="@android:color/transparent"
+            android:padding="0dp"
+            android:text="ok"
+            android:textColor="@color/disable"
+            android:textSize="15sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/dialogPermission_view_separator_third" />
+
+        <Button
+            android:id="@+id/dialogPermission_button_cancel"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:background="@android:color/transparent"
+            android:padding="0dp"
+            android:text="cancel"
+            android:enabled="false"
+            android:textColor="@color/enable"
+            android:textSize="15sp"
+            app:layout_constraintEnd_toStartOf="@+id/dialogPermission_button_OK"
+            app:layout_constraintTop_toBottomOf="@id/dialogPermission_view_separator_third" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="cardView_SingleClick">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">240dp</item>
+        <item name="android:layout_marginLeft">8dp</item>
+        <item name="android:layout_marginRight">8dp</item>
+        <item name="android:layout_marginTop">16dp</item>
+        <item name="cardBackgroundColor">@color/cardView_homeFragment_lightMode</item>
+        <item name="android:checkable">true</item>
+        <item name="android:focusable">true</item>
+        <item name="android:clickable">true</item>
+        <item name="cardElevation">0.8dp</item>
+        <item name="cardMaxElevation">1dp</item>
+    </style>
+
+    <style name="Separator">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">1dp</item>
+        <item name="android:background">@android:drawable/divider_horizontal_bright</item>
+    </style>
+
+    <style name="dialogPermission_title">
+        <item name="android:paddingStart">8dp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:text">@string/dialog_permission_title</item>
+        <item name="android:textSize">24sp</item>
+        <item name="android:background">@color/dialogPermission_title_background</item>
+        <item name="android:textColor">@color/dialogPermission_title_textColor</item>
+        <item name="android:gravity">center_vertical</item>
+    </style>
+
+    <style name="dialogPermission_header">
+        <item name="android:paddingStart">8dp</item>
+        <item name="android:text">@string/dialog_permission_header</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/dialogPermission_header_textColor_lightMode</item>
+    </style>
+
+
+    <style name="ToolbarTheme" parent="@style/ThemeOverlay.AppCompat.ActionBar">
+        <item name="android:textColorPrimary">@color/dialogPermission_title_textColor</item>
+        <item name="selectableItemBackground">?attr/selectableItemBackground</item>
+        <item name="selectableItemBackgroundBorderless">?attr/selectableItemBackgroundBorderless</item>
+    </style>
+
+</resources>

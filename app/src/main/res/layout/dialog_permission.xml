@@ -12,6 +12,7 @@
             android:id="@+id/dialogPermission_textView_title"
             android:layout_width="match_parent"
             android:layout_height="70dp"
+            android:text="@string/dialog_permission_title"
             android:theme="@style/dialogPermission_title"
             app:layout_constraintTop_toTopOf="parent" />
 

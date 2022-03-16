@@ -13,6 +13,12 @@
     <dialog
         android:id="@+id/customDialogPermission"
         android:name="com.example.autoclickerapp.ui.activity.DialogPermission"
-        tools:layout="@layout/dialog_permission"
-        android:label="CustomDialogPermission" />
+        android:label="CustomDialogPermission"
+        tools:layout="@layout/dialog_permission" />
+    <fragment
+        android:id="@+id/scenariosFragment"
+        android:name="com.example.autoclickerapp.ui.home.scenarios.ScenariosFragment"
+        android:label="fragment_scenarios"
+        tools:layout="@layout/fragment_scenarios" />
+
 </navigation>

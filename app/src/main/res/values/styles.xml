@@ -24,7 +24,6 @@
     <style name="dialogPermission_title">
         <item name="android:paddingStart">8dp</item>
         <item name="android:textStyle">bold</item>
-        <item name="android:text">@string/dialog_permission_title</item>
         <item name="android:textSize">24sp</item>
         <item name="android:background">@color/dialogPermission_title_background</item>
         <item name="android:textColor">@color/dialogPermission_title_textColor</item>

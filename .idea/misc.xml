@@ -13,15 +13,19 @@
         <entry key="app/src/main/res/drawable/lightbulb_alert.xml" value="0.191" />
         <entry key="app/src/main/res/layout-v23/dialog_permissions.xml" value="0.32864583333333336" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/dialog_new_rename_scenario.xml" value="0.33" />
         <entry key="app/src/main/res/layout/dialog_permission.xml" value="0.328125" />
         <entry key="app/src/main/res/layout/dialog_permission_snackbar.xml" value="0.33" />
         <entry key="app/src/main/res/layout/dialog_permissions.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/dialog_scenario_rename.xml" value="0.32864583333333336" />
         <entry key="app/src/main/res/layout/fragment_detail.xml" value="0.32864583333333336" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/fragment_scenarios.xml" value="0.32864583333333336" />
         <entry key="app/src/main/res/layout/fragment_scenarios_list.xml" value="0.32864583333333336" />
         <entry key="app/src/main/res/layout/include_view_separator.xml" value="0.32864583333333336" />
-        <entry key="app/src/main/res/layout/item_scenario.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/item_scenario.xml" value="0.25" />
         <entry key="app/src/main/res/layout/merge_loadable_list.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/view_dialog_title.xml" value="0.32864583333333336" />
       </map>
     </option>
   </component>

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import type="android.view.View"/>
+        <variable
+            name="viewModel"
+            type="com.example.autoclickerapp.ui.home.scenarios.ScenarioViewModel" />
+    </data>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.home.scenarios.ScenariosFragment">
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_loadableList"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:listData="@{viewModel.scenarioPropertyData}"
+            tools:listitem="@layout/item_scenario" />
+
+        <TextView
+            android:id="@+id/empty_alert"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:textSize="17sp"
+            android:visibility="gone"
+            android:text="No Scenario.\nPlease click on the '+' button to create one." />
+
+        <ProgressBar
+            android:id="@+id/loading"
+            style="?android:attr/progressBarStyleLarge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:visibility="@{viewModel.loadingProgressBar? View.VISIBLE: View.GONE}" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/floatingBtn_add"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:layout_margin="16dp"
+            android:contentDescription="Add a new Scenario."
+            android:elevation="6dp"
+            android:tint="@color/error"
+            app:backgroundTint="@color/primary"
+            app:srcCompat="@drawable/ic_add" />
+
+
+    </FrameLayout>
+
+</layout>

@@ -1,85 +1,72 @@
 package com.example.autoclickerapp.ui.home.scenarios
 
+import android.content.ContextWrapper
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
-import androidx.recyclerview.widget.AsyncListDiffer
+import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.example.autoclickerapp.R
-import com.example.autoclickerapp.db.model.Scenario
+import com.example.autoclickerapp.databinding.ItemScenarioBinding
+import com.example.autoclickerapp.model.Scenario
+import kotlinx.android.synthetic.main.item_scenario.view.*
 
-class ScenarioAdapter{
+class ScenarioAdapter(private val onClickListener: OnClickListener, private val viewModel: ScenarioViewModel) :
+    ListAdapter<Scenario,
+            ScenarioAdapter.ScenarioViewHolder>(DiffCallback) {
 
-}
-/*
-class ScenarioAdapter : RecyclerView.Adapter<ScenarioAdapter.ScenarioViewHolder>() {
-
-    private lateinit var scenarioList: MutableList<Scenario>
-
-    // Adapter ClickListener
-    private lateinit var mListener: OnItemClickListener
-
-    interface OnItemClickListener {
-        fun onItemClick(position: Int)
+    class ScenarioViewHolder(private var binding: ItemScenarioBinding):
+        RecyclerView.ViewHolder(binding.root) {
+        fun bind(scenario: Scenario) {
+            binding.scenario = scenario
+            // This is important, because it forces the data binding to execute immediately,
+            // which allows the RecyclerView to make the correct view size measurements
+            binding.executePendingBindings()
+        }
     }
 
-    fun setOnItemClickListener(listener: OnItemClickListener) {
-        mListener = listener
-    }
-
-    // Differ
-    private val differCallback = object : DiffUtil.ItemCallback<Scenario>() {
+    companion object DiffCallback : DiffUtil.ItemCallback<Scenario>() {
         override fun areItemsTheSame(oldItem: Scenario, newItem: Scenario): Boolean {
-            return oldItem.name === newItem.name
+            return oldItem === newItem
         }
 
         override fun areContentsTheSame(oldItem: Scenario, newItem: Scenario): Boolean {
-            return oldItem == newItem
-        }
-    }
-    var differ = AsyncListDiffer(this, differCallback)
-
-
-    inner class ScenarioViewHolder(itemView: View, listener: OnItemClickListener) :
-        RecyclerView.ViewHolder(itemView) {
-
-        var scenarioName: TextView = itemView.findViewById(R.id.event_name)
-//        var pointX: TextView = itemView.findViewById(R.id.event_detail)
-
-        init {
-            itemView.setOnClickListener {
-                listener.onItemClick(adapterPosition)
-            }
+            return oldItem.name == newItem.name
         }
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ScenarioViewHolder {
-        return ScenarioViewHolder(
-            LayoutInflater.from(parent.context).inflate(
-                R.layout.item_scenario,
-                parent,
-                false
-            ), mListener
-        )
+    override fun onCreateViewHolder(parent: ViewGroup,
+                                    viewType: Int): ScenarioViewHolder {
+        return ScenarioViewHolder(ItemScenarioBinding.inflate(LayoutInflater.from(parent.context), parent, false))
     }
 
     override fun onBindViewHolder(holder: ScenarioViewHolder, position: Int) {
-        scenarioList = differ.currentList
-        val scenario = scenarioList[position]
-        holder.itemView.apply {
-            holder.scenarioName.text = scenario.name
-//            holder.pointX.text = scenario.pointX.toString()
+        val scenarioModel = getItem(position)
+        holder.itemView.setOnClickListener {
+            onClickListener.onClick(scenarioModel)
         }
+        holder.itemView.imageButton_rename_scenario.setOnClickListener {
+            showRenameScenarioDialog(it)
+            val scenarioList: List<Scenario>? = viewModel.scenarioPropertyData.value
+            viewModel.selectedItemId = scenarioList!![position].id
+        }
+        holder.bind(scenarioModel)
     }
 
-    override fun getItemCount(): Int {
-        return differ.currentList.size
+    private fun showRenameScenarioDialog(it: View?) {
+        viewModel.activeLoadingProgressBar()
+        viewModel.renameScenarioClicked()
+        val c = (it?.context as ContextWrapper).baseContext
+        val fragmentManager = (c as FragmentActivity).supportFragmentManager
+        DialogName(viewModel).show(fragmentManager, "Dialog Rename Scenario")
+        viewModel.inactiveLoadingProgressBar()
     }
 
+    class OnClickListener(val clickListener: (scenario: Scenario) -> Unit) {
+        fun onClick(scenario: Scenario) = clickListener(scenario)
+    }
 }
-*/
 
 
 

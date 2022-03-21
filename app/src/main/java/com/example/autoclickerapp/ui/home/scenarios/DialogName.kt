@@ -12,7 +12,7 @@ import android.widget.EditText
 import androidx.fragment.app.DialogFragment
 import com.example.autoclickerapp.R
 import com.example.autoclickerapp.databinding.DialogNewRenameScenarioBinding
-import com.example.autoclickerapp.db.model.Scenario
+import com.example.autoclickerapp.model.Scenario
 
 class DialogName(val viewModel: ScenarioViewModel) : DialogFragment() {
 
@@ -23,7 +23,7 @@ class DialogName(val viewModel: ScenarioViewModel) : DialogFragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         dialog!!.window?.setBackgroundDrawableResource(R.drawable.bg_permission_dialog)
         binding = DialogNewRenameScenarioBinding.inflate(inflater, container, false)
         return binding.root
@@ -32,15 +32,26 @@ class DialogName(val viewModel: ScenarioViewModel) : DialogFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         dialogParams()
+        setTitle()
         editTextChangeListener(binding.editTextName, binding.btnOk, binding.btnCancel)
         btnOkClickListener(binding.btnOk)
+        btnCancelClickListener(binding.btnCancel)
     }
 
     private fun dialogParams() {
         val width = (resources.displayMetrics.widthPixels * 0.85).toInt()
-        dialog!!.setCanceledOnTouchOutside(false)
+        dialog!!.setCanceledOnTouchOutside(true)
         dialog!!.window?.setLayout(width, ViewGroup.LayoutParams.WRAP_CONTENT)
     }
+
+    private fun setTitle() {
+        if (viewModel.isClickedAddNewScenarioFb.value!!) {
+            binding.tVScenarioTitle.text = getString(R.string.add_new_scenario)
+        } else {
+            binding.tVScenarioTitle.text = getString(R.string.rename_scenario)
+        }
+    }
+
 
     private fun editTextChangeListener(et: EditText, btnOk: Button, btnCancel: Button) {
         et.addTextChangedListener(object : TextWatcher {
@@ -67,7 +78,19 @@ class DialogName(val viewModel: ScenarioViewModel) : DialogFragment() {
 
     private fun btnOkClickListener(btnOk: Button) {
         btnOk.setOnClickListener {
-            viewModel.saveScenario(Scenario(binding.editTextName.text.toString()))
+            dismiss()
+            viewModel.activeLoadingProgressBar()
+            if (viewModel.isClickedAddNewScenarioFb.value!!) {
+                viewModel.saveScenario(Scenario(binding.editTextName.text.toString()))
+            } else {
+                viewModel.renameScenario(binding.editTextName.text.toString())
+            }
+        }
+
+    }
+
+    private fun btnCancelClickListener(btnCancel: Button) {
+        btnCancel.setOnClickListener {
             dismiss()
         }
     }

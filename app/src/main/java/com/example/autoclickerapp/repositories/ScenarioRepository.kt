@@ -1,7 +1,7 @@
 package com.example.autoclickerapp.repositories
 
 import com.example.autoclickerapp.db.AppDatabase
-import com.example.autoclickerapp.db.model.Scenario
+import com.example.autoclickerapp.model.Scenario
 import javax.inject.Inject
 
 
@@ -11,7 +11,9 @@ class ScenarioRepository @Inject constructor(
 
     suspend fun insert(scenario: Scenario) = db.scenarioDao().insert(scenario)
 
-    fun getAllScenarios() = db.scenarioDao().getAll()
+    suspend fun rename(name: String, id:Long) = db.scenarioDao().rename(name, id)
+
+    suspend fun getAllScenarios() = db.scenarioDao().getAll()
 
     suspend fun deleteAll() = db.scenarioDao().deleteAll()
 

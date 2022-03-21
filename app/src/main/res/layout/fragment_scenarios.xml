@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
+        <import type="android.view.View"/>
         <variable
             name="viewModel"
             type="com.example.autoclickerapp.ui.home.scenarios.ScenarioViewModel" />
@@ -17,6 +17,14 @@
         tools:context=".ui.home.scenarios.ScenariosFragment">
 
 
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_loadableList"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:listData="@{viewModel.scenarioPropertyData}"
+            tools:listitem="@layout/item_scenario" />
+
         <TextView
             android:id="@+id/empty_alert"
             android:layout_width="match_parent"
@@ -24,7 +32,7 @@
             android:gravity="center"
             android:textSize="17sp"
             android:visibility="gone"
-            tools:text="No Scenario.\nPlease click on the '+' button to create one." />
+            android:text="No Scenario.\nPlease click on the '+' button to create one." />
 
         <ProgressBar
             android:id="@+id/loading"
@@ -32,17 +40,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:visibility="gone" />
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_loadableList"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_gravity="center"
-            android:scrollbars="vertical"
-            android:visibility="visible"
-            tools:itemCount="10"
-            tools:listitem="@layout/item_scenario" />
+            android:visibility="@{viewModel.loadingProgressBar? View.VISIBLE: View.GONE}" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/floatingBtn_add"

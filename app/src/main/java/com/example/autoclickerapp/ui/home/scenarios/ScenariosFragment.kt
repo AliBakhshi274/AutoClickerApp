@@ -6,10 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.Observer
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.autoclickerapp.databinding.FragmentScenariosBinding
 import dagger.hilt.android.AndroidEntryPoint
+import timber.log.Timber
 
 @AndroidEntryPoint
 class ScenariosFragment : Fragment() {
@@ -19,45 +18,32 @@ class ScenariosFragment : Fragment() {
     /* DataBinding contains the view for this Fragment (fragment_scenarios_list) */
     private lateinit var binding: FragmentScenariosBinding
 
-    private lateinit var scenarioAdapter: ScenarioAdapter
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        binding = FragmentScenariosBinding.inflate(inflater, container, false)
+    ): View {
+        binding = FragmentScenariosBinding.inflate(inflater)
         binding.lifecycleOwner = this
+        binding.viewModel = viewModel
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-//        setupRecyclerView()
-//        getSavedScenarios()
-        listeners()
-
+        recyclerViewClickListener()
+        floatingBtnClickListener()
     }
 
-/*
-    private fun getSavedScenarios() {
-        viewModel.getAllScenarios().observe(this, Observer { scenarios ->
-            scenarioAdapter.differ.submitList(scenarios)
-        })
+    private fun recyclerViewClickListener() {
+        binding.rvLoadableList.adapter = ScenarioAdapter(ScenarioAdapter.OnClickListener {
+            Timber.e("Timber -> Clicked on recyclerView's item!")
+        } , viewModel)
     }
 
-    private fun setupRecyclerView() {
-        scenarioAdapter = ScenarioAdapter()
-        binding.rvLoadableList.apply {
-            adapter = scenarioAdapter
-            layoutManager = LinearLayoutManager(requireContext())
-        }
-    }
-*/
-
-    private fun listeners() {
+    private fun floatingBtnClickListener() {
         binding.floatingBtnAdd.setOnClickListener {
+            viewModel.addNewScenarioFbClicked()
             DialogName(viewModel).show(parentFragmentManager, "DialogName")
         }
     }

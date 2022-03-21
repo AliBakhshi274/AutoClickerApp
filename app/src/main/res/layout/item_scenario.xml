@@ -6,8 +6,11 @@
 
     <data>
         <variable
+            name="viewModel"
+            type="com.example.autoclickerapp.ui.home.scenarios.ScenarioViewModel" />
+        <variable
             name="scenario"
-            type="com.example.autoclickerapp.db.model.Scenario" />
+            type="com.example.autoclickerapp.model.Scenario" />
     </data>
     
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -18,11 +21,12 @@
             android:id="@+id/event_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="8dp"
+            android:layout_marginLeft="16dp"
             android:layout_marginTop="8dp"
             android:textColor="@color/title"
             android:textSize="18sp"
             android:textStyle="bold"
+            android:text="@{scenario.name}"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="Scenario Name" />
@@ -32,9 +36,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
-            android:textColor="@color/material_dynamic_neutral_variant50"
             android:textSize="14sp"
             android:textStyle="italic"
+            android:text="@{String.valueOf(scenario.pointX)}"
             app:layout_constraintLeft_toLeftOf="@id/event_name"
             app:layout_constraintTop_toBottomOf="@id/event_name"
             tools:text="0 events" />
@@ -48,8 +52,7 @@
             android:contentDescription="Rename Scenario"
             android:src="@drawable/ic_rename"
             app:layout_constraintRight_toLeftOf="@id/imageButton_delete_scenario"
-            app:layout_constraintTop_toTopOf="parent"
-            app:tint="@color/material_dynamic_neutral_variant50" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <ImageButton
             android:id="@+id/imageButton_delete_scenario"
@@ -59,8 +62,7 @@
             android:background="?android:attr/selectableItemBackgroundBorderless"
             android:src="@drawable/ic_delete"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:tint="@color/material_dynamic_neutral_variant50" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <view
             class="com.google.android.material.divider.MaterialDivider"
